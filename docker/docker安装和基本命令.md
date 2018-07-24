@@ -32,6 +32,12 @@ $ docker pull ubuntu
 //推送到仓库
 $ docker push ubuntu
 
+//运行容器
+$ docker run --restart=always --name centos beyondyinjl/centos
+
+//交互模式启动容器
+$ docker run -it beyondyinjl/centos /bin/bash
+
 //查看镜像
 $ docker images
 
