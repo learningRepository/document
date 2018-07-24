@@ -73,10 +73,10 @@ If you enter '.', the field will be left blank.
 Country Name (2 letter code) [XX]:CN
 State or Province Name (full name) []:guangdong
 Locality Name (eg, city) [Default City]:shenzhen
-Organization Name (eg, company) [Default Company Ltd]:afmobi
+Organization Name (eg, company) [Default Company Ltd]:liang
 Organizational Unit Name (eg, section) []:soft
 Common Name (eg, your name or your server's hostname) []:registrydomain.com
-Email Address []:jinliang.yin@afmobigroup.com
+Email Address []:jinliang.yin@xxx.com
 Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
