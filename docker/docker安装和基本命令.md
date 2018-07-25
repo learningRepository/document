@@ -30,10 +30,16 @@ $ docker search nginx
 $ docker pull ubuntu 
 
 //推送到仓库
-$ docker push ubuntu
+$ docker push beyondyinjl/ubuntu
+
+//创建容器,没有启动
+$ docker create  --name my nginx:latest   
 
 //运行容器
-$ docker run --restart=always --name centos beyondyinjl/centos
+$ docker run -d -p 80:80 --name webserver nginx
+
+//进入容器 开启一个交互模式的终端
+$ docker exec -it webserver /bin/bash
 
 //交互模式启动容器
 $ docker run -it beyondyinjl/centos /bin/bash
@@ -46,9 +52,6 @@ $ docker rmi -f 镜像id
 
 //获取容器日志 与tail -f 类似
 $ docker logs centos_d_container -f
-
-//容器ubuntu中开启一个交互模式的终端
-$ docker exec -i -t ubuntu /bin/bash
 
 //来查看当前系统中正在运行的容器列表
 $ docker ps    
@@ -67,5 +70,11 @@ $ docker rm `docker ps -a -q`
 
 //查看容器的端口映射情况
 $ docker port 容器名 
+
+//获取容器/镜像的元数据
+$ docker inspect 容器或镜像
+
+//查看容器的进程信息
+$ docker top 容器
 
 ```
