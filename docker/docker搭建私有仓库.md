@@ -176,3 +176,21 @@ storage:
 $ docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/config.yml:/etc/docker/registry/config.yml  -v `pwd`/auth:/auth   -e "REGISTRY_AUTH=htpasswd"   -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"   -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd   -v `pwd`/certs:/certs   -v /data:/var/lib/registry   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt   -e REGISTRY_HTTP_TLS_KEY=/certs/server.key   registry:2
 ```
 注意：不建议使用删除，镜像是以层的概念，每个镜像可能依赖相同的层，在这里删除不会物理删除
+
+### API
+
+|method	|path                             |Entity        |Description |
+|-------|---------------------------------|--------------|------------|
+|GET    |/v2/                             |Base          |Check that the endpoint implements Docker Registry API V2.|
+|GET    |/v2/name/tags/list             |Tags          |Fetch the tags under the repository identified by name.   |
+|GET    |/v2/name/manifests/reference |Manifest      |Fetch the manifest identified by nameand referencewhere referencecan be a tag or digest. A HEADrequest can also be issued to this endpoint to obtain resource information without receiving all data.|
+|PUT    |/v2/name/manifests/reference |Manifest      |Put the manifest identified by nameand referencewhere referencecan be a tag or digest.|
+|DELETE |/v2/name/manifests/reference |Manifest      |Delete the manifest identified by nameand reference. Note that a manifest can only be deleted by digest.|
+|GET    |/v2/name/blobs/digest        |Blob          |Retrieve the blob from the registry identified bydigest. A HEADrequest can also be issued to this endpoint to obtain resource information without receiving all data.|
+|DELETE |/v2/name/blobs/digest        |Blob          |Delete the blob identified by nameand digest|
+|POST   |/v2/name/blobs/uploads/        |Initiate Blob |Upload	Initiate a resumable blob upload. If successful, an upload location will be provided to complete the upload. Optionally, if thedigest parameter is present, the request body will be used to complete the upload in a single request.|
+|GET    |/v2/name/blobs/uploads/uuid  |Blob Upload   |Retrieve status of upload identified byuuid. The primary purpose of this endpoint is to resolve the current status of a resumable upload.|
+|PATCH  |/v2/name/blobs/uploads/uuid  |Blob Upload   |Upload a chunk of data for the specified upload.|
+|PUT    |/v2/name/blobs/uploads/uuid  |Blob Upload   |Complete the upload specified by uuid, optionally appending the body as the final chunk.|
+|DELETE |/v2/name/blobs/uploads/uuid  |Blob Upload   |Cancel outstanding upload processes, releasing associated resources. If this is not called, the unfinished uploads will eventually timeout.|
+|GET    |/v2/_catalog                     |Catalog       |Retrieve a sorted, json list of repositories available in the registry.|
