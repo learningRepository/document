@@ -41,6 +41,9 @@ $ docker run -d -p 80:80 --name webserver nginx
 //进入容器 开启一个交互模式的终端
 $ docker exec -it webserver /bin/bash
 
+//在容器内执行后台任务，创建一个文件
+$ sudo docker exec -d centos_d_container touch /etc/new_config_file 
+
 //交互模式启动容器
 $ docker run -it beyondyinjl/centos /bin/bash
 
