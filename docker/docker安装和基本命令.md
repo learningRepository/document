@@ -12,6 +12,8 @@ $ curl -fsSL https://get.docker.com/ | sh
 //启动服务
 $ systemctl start docker 
 
+$ docker --help
+
 //查看版本
 $ docker --version 
 
