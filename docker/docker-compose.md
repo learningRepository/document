@@ -1,4 +1,7 @@
-### Docker Compose
+## Docker Compose
+
+   Docker Compose 定义一组要启动的容器，以及容器运行是的属性，这组容器叫做服务。 Docker Compose可以用一个YAML文件定义并启动服务。
+Docker Compose File有两个版本：version 1现在已不支持,建议使用version 2。 
 
 安装docker-compose
 ```shell
