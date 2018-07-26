@@ -55,6 +55,9 @@ $ docker images
 //删除镜像 -f表示强制删除
 $ docker rmi -f 镜像id
 
+//创建一个后台执行的容器, -d表示后台执行
+$ docker run --name centos_d_container -d centos /bin/sh -c "while true; do echo hello world; sleep 1; done"
+
 //获取容器日志 与tail -f 类似
 $ docker logs centos_d_container -f
 
